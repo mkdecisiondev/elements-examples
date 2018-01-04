@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title data-tid="elements_examples.meta.title">Example based on https://stripe.com/docs/stripe-js/elements/quickstart#setup</title>
+	<meta data-tid="elements_examples.meta.description" name="description" content="Build beautiful, smart checkout flows.">
+
+
+	<script src="https://js.stripe.com/v3/"></script>
+	<!-- script src="js/index.js" data-rel-js></script -->
+
+
+	<!-- link rel="stylesheet" type="text/css" href="css/base.css" data-rel-css="" / -->
+
+	<!-- link rel="stylesheet" type="text/css" href="css/example4.css" data-rel-css="" / -->
+
+</head>
+
+<body>
+
+	<script>
+			var stripe = Stripe('pk_test_dDgp9AHHb8DUfsjskRiEw6uB');
+			var elements = stripe.elements();
+	</script>
+
+	<main>
+		<h1>see <a href="https://stripe.com/docs/stripe-js/elements/quickstart#setup">https://stripe.com/docs/stripe-js/elements/quickstart#setup</a></h1>
+		<form action="/charge" method="post" id="payment-form">
+			<div class="form-row">
+				<label for="card-element">
+				Credit or debit card
+				</label>
+				<div id="card-element">
+				<!-- a Stripe Element will be inserted here. -->
+				</div>
+
+				<!-- Used to display Element errors -->
+				<div id="card-errors" role="alert"></div>
+			</div>
+
+			<button>Submit Payment</button>
+			</form>
+
+	</main>
+
+
+
+	<script>
+		// Custom styling can be passed to options when creating an Element.
+		var style = {
+		base: {
+			// Add your base input styles here. For example:
+			fontSize: '16px',
+			color: "#32325d",
+		}
+		};
+
+		// Create an instance of the card Element
+		var card = elements.create('card', {style: style});
+
+		// Add an instance of the card Element into the `card-element` <div>
+		card.mount('#card-element');
+
+
+		/*********** ************/
+
+		card.addEventListener('change', function(event) {
+			var displayError = document.getElementById('card-errors');
+			if (event.error) {
+				displayError.textContent = event.error.message;
+			} else {
+				displayError.textContent = '';
+			}
+		});
+
+		/***********  ************/
+	</script>
+
+
+</body>
+
+</html>

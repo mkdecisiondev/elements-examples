@@ -69,13 +69,18 @@
   white-space: nowrap;
 }
 
-.example.example5 .input {
+.example.example5 .input,
+input#amount{
   width: 100%;
   color: #fff;
   background: transparent;
   padding: 5px 0 6px 0;
   border-bottom: 1px solid #a988ec;
   transition: border-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#zeroCents {
+  color:#fff; background: transparent;
 }
 
 .example.example5 .input::-webkit-input-placeholder {

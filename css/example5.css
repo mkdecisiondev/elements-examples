@@ -96,7 +96,8 @@ input#amount{
 }
 
 .example.example5 .input.StripeElement--focus,
-.example.example5 .input:focus {
+.example.example5 .input:focus,
+#amount.input:focus {
   border-color: #fff;
 }
 .example.example5 .input.StripeElement--invalid {

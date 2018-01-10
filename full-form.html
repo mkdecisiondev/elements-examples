@@ -12,7 +12,7 @@
   <!-- link rel="icon" href="img/apple-touch-icon/180x180.png" -->
 
   <script src="https://js.stripe.com/v3/"></script>
-  <script src="js/index.js" data-rel-js></script>
+  <!-- <script src="js/index.js" data-rel-js></script> -->
 
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -48,8 +48,8 @@
             </div>
             <div class="row">
               <div class="field">
-                <label for="example5-email" data-tid="elements_examples.form.email_label">Email</label>
-                <input id="example5-email" data-tid="elements_examples.form.email_placeholder" class="input" type="text" placeholder="janedoe@gmail.com" required="" name="email">
+                <label for="example5-email">Email</label>
+                <input id="example5-email" class="input" type="text" placeholder="janedoe@gmail.com" required="" name="email">
               </div>
               <div class="field">
                 <label for="example5-phone" data-tid="elements_examples.form.phone_label">Phone</label>
@@ -92,7 +92,7 @@
 					<label for="amount">Donation Amount (whole dollars)</label>
 					<input id="amount" class="input" name="amount" type="number" size="4" maxlength="4" placeholder="25" style="width: 4em; text-align:right;"><span id="zeroCents">.00</span>
 				</div>
-			</div>
+      </div>
 			<!-- /MK -->
 
 
@@ -188,7 +188,6 @@
       event.preventDefault();
       let donorData = {}
       donorData.name = this.name.value;
-      donorData.receipt_email = this.email.value; // var name not clear in reference: email / payerEmail / receipt_email / someting else
       donorData.phone = this.phone.value; // var name not clear in reference: phone / payerPhone / something else
       donorData.address_line1 = this.address_line1.value;
       donorData.address_city = this.address_city.value;

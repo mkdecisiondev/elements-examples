@@ -33,10 +33,14 @@
     </div>
     <section class="container-lg">
 
+      <script>
+        var stripe = Stripe('pk_test_dDgp9AHHb8DUfsjskRiEw6uB'); // Avram's test Stripe token: pk_test_dDgp9AHHb8DUfsjskRiEw6uB
+        var elements = stripe.elements();
+      </script>
 
       <!--Example 2-->
       <div class="cell example example2">
-        <form>
+        <form action="https://b28hvg9sf5.execute-api.us-east-1.amazonaws.com/dev/charges" method="post" id="payment-form" autocomplete="on">
           <div data-locale-reversible>
             <div class="row">
               <div class="field">

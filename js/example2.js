@@ -79,5 +79,48 @@
   });
   cardCvc.mount('#example2-card-cvc');
 
-  registerElements([cardNumber, cardExpiry, cardCvc], 'example2');
+  registerElements([cardNumber, cardExpiry, cardCvc], 'example2'); //?
+
+
+    // Create a token or display an error when the form is submitted.
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // $('#stripe-credit-card').on('keyup', addErrorBox);
+
+      let donorData = {};
+      // donorData.name = this.first_name.value + " " + this.last_name.value;
+      donorData.example2_address = this.example2address.value;
+      donorData.example2_city = this.example2city.value;
+      donorData.example2_state = this.example2state.value;
+      donorData.example2_zip = this.example2zip.value;
+      // donorData.optional_message = this.optional_message.value;
+      stripe.createToken(cardNumber, cardExpiry, cardCvc, donorData).then(function (result) {
+        if (result.error) {
+          console.log('stripe.createToken result.error');
+          // Inform the customer that there was an error
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+
+			function stripeTokenHandler(token) {
+				// Insert the token ID into the form so it gets submitted to the server
+				console.log('Submit')
+				var form = document.getElementById('payment-form');
+				var hiddenInput = document.createElement('input');
+				hiddenInput.setAttribute('type', 'hidden');
+				hiddenInput.setAttribute('name', 'stripeToken');
+				hiddenInput.setAttribute('value', token.id);
+				form.appendChild(hiddenInput);
+				// Submit the form
+				form.submit();
+			}
+
+
 })();
